@@ -1,3 +1,6 @@
+const cont = document.querySelectorAll('.container');
+cont.forEach(button => button.addEventListener('click', playRound));
+
 function game() {
     let wins = [0, 0]; //Array containing the winner of each round. wins[0] is the player, wins[1] is the computer.
     let playerWins = 0; //Both players start with 0 points.
@@ -40,11 +43,14 @@ function computerPlay() {
     return play;
 }
 
-function playRound(playerSelection,computerSelection) {
-    let wins = [0, 0]; //The round always starts with no score.
-    playerSelection = playerSelection.split('').map(x => x.toLowerCase()).join('');
-    console.log(`Player played ${playerSelection}, computer played ${computerSelection}.`);
+function playRound(e) {
+    let playerSelection = e.target.id;
+    let computerSelection = computerPlay();
     
+    let para = document.querySelector('#play');
+    para.textContent = `Player played ${playerSelection}, computer played ${computerSelection}.`
+    let wins = [0, 0]; //The round always starts with no score.
+     
     switch (playerSelection) {
         case "rock":
             if (computerSelection === "rock") {

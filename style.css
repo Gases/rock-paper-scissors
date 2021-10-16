@@ -1,0 +1,39 @@
+html {
+  box-sizing: border-box;
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+#current-round {
+  width: 100%;
+  height: 100px;
+  text-align: center;
+}
+
+.container {
+  margin: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.buttons {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 36px;
+}
+
+.btn {
+  padding: 24px 48px; 
+  border: solid 1px black;
+  border-radius: 5px;
+}
