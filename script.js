@@ -1,4 +1,4 @@
-const cont = document.querySelectorAll('.container');
+const cont = document.querySelectorAll('.btn');
 cont.forEach(button => button.addEventListener('click', playRound));
 
 function game() {
@@ -47,43 +47,44 @@ function playRound(e) {
     let playerSelection = e.target.id;
     let computerSelection = computerPlay();
     
-    let para = document.querySelector('#play');
-    para.textContent = `Player played ${playerSelection}, computer played ${computerSelection}.`
+    let play = document.querySelector('#play');
+    let winner = document.querySelector('#winner');
+    play.textContent = `Player played ${playerSelection}, computer played ${computerSelection}.`
     let wins = [0, 0]; //The round always starts with no score.
      
     switch (playerSelection) {
         case "rock":
             if (computerSelection === "rock") {
-                console.log('Draw!');
+                winner.textContent = 'Draw!'
             } else if (computerSelection === "paper") {
-                console.log('Computer wins!');
+                winner.textContent = 'Computer wins!';
                 wins[1] += 1;
             } else if (computerSelection === "scissor") {
-                console.log('Player wins!');
+                winner.textContent = 'Player wins!';
                 wins[0] += 1;
             }
             break;
 
         case "paper":
             if (computerSelection === "paper") {
-                console.log('Draw!');
+                winner.textContent = 'Draw!'
             } else if (computerSelection === "scissor") {
-                console.log('Computer wins!');
+                winner.textContent = 'Computer wins!';
                 wins[1] += 1;
             } else if (computerSelection === "rock") {
-                console.log('Player wins!');
+                winner.textContent = 'Player wins!';
                 wins[0] += 1;
             }
             break;
 
         case "scissor":
             if (computerSelection === "scissor") {
-                console.log('Draw!');
+                winner.textContent = 'Draw!'
             } else if (computerSelection === "rock") {
-                console.log('Computer wins!');
+                winner.textContent = 'Computer wins!';
                 wins[1] += 1;
             } else if (computerSelection === "paper") {
-                console.log('Player wins!');
+                winner.textContent = 'Player wins!';
                 wins[0] += 1;
             }
             break;
