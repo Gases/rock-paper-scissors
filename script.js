@@ -1,28 +1,21 @@
-const cont = document.querySelectorAll('.btn');
-cont.forEach(button => button.addEventListener('click', playRound));
+const btn = document.querySelectorAll('.btn');
+btn.forEach(button => button.addEventListener('click', playRound));
+var playerWins = 0;
+var computerWins = 0;
 
-function game() {
-    let wins = [0, 0]; //Array containing the winner of each round. wins[0] is the player, wins[1] is the computer.
-    let playerWins = 0; //Both players start with 0 points.
-    let computerWins = 0;
-
-    while (playerWins < 5 && computerWins < 5) { //Keep playing until someone gets to 5 points.
-        let playerSelection = prompt('Enter your play: ');
-        let computerSelection = computerPlay();
-        wins = playRound(playerSelection,computerSelection);
-        if (wins[0] === 1) {
-            playerWins++;
-        } else if (wins[1] === 1) {
-            computerWins++;
-        }
-        console.log(`Player has ${playerWins} points. Computer has ${computerWins} points.`);
+function game(wins) {
+    let score = document.querySelector('#current-score');
+    let gameWinner = document.querySelector('#game-winner');
+    
+    if (wins[0] === 1) {
+        playerWins++;
+    } else if (wins[1] === 1) {
+        computerWins++;
     }
+    score.textContent = `PLAYER: ${playerWins} COMPUTER: ${computerWins}`;
 
-    if (playerWins > computerWins) {
-        console.log('The player wins this time!'); 
-    } else {
-        console.log('The computer wins this time!');
-    }
+    if (playerWins === 5) gameWinner.textContent = 'The player wins this time!'; 
+    else if (computerWins === 5) gameWinner.textContent = 'The computer wins this time!';
 }
 
 function computerPlay() {
@@ -94,5 +87,5 @@ function playRound(e) {
             break;
     }
     
-    return wins;
+    game(wins);
 }

@@ -33,7 +33,21 @@ html {
 }
 
 .btn {
-  padding: 24px 48px; 
+  padding: 24px 48px;
+  margin: 16px 0px;
   border: solid 1px black;
   border-radius: 5px;
+}
+
+.score {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+
+.score > p {
+  margin: 0;
 }
