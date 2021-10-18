@@ -1,10 +1,10 @@
 var btn = document.querySelectorAll('.btn');
 btn.forEach(button => button.addEventListener('click', playRound));
 
-var refresh = document.createElement('button');
-refresh.classList.add('btn');
-refresh.textContent = 'Play again!';
-refresh.addEventListener('click',restartGame);
+var playAgain = document.createElement('button');
+playAgain.classList.add('btn');
+playAgain.textContent = 'Play again!';
+playAgain.addEventListener('click',restartGame);
 
 var container = document.querySelector('.container');
 var playerWins = 0;
@@ -24,11 +24,11 @@ function game(wins) {
     if (playerWins === 5) {
         gameWinner.textContent = 'The player wins this time!';
         btn.forEach(button => button.disabled = true);
-        container.appendChild(refresh);
+        container.appendChild(playAgain);
     } else if (computerWins === 5) {
         gameWinner.textContent = 'The computer wins this time!';
         btn.forEach(button => button.disabled = true);
-        container.appendChild(refresh);
+        container.appendChild(playAgain);
     }
 }
 
@@ -105,6 +105,5 @@ function playRound(e) {
 }
 
 function restartGame() {
-    playerWins = 0;
-    computerWins = 0;
+    window.location.reload();
 }
