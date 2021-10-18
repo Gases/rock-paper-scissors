@@ -1,5 +1,12 @@
-const btn = document.querySelectorAll('.btn');
+var btn = document.querySelectorAll('.btn');
 btn.forEach(button => button.addEventListener('click', playRound));
+
+var refresh = document.createElement('button');
+refresh.classList.add('btn');
+refresh.textContent = 'Play again!';
+refresh.addEventListener('click',restartGame);
+
+var container = document.querySelector('.container');
 var playerWins = 0;
 var computerWins = 0;
 
@@ -12,10 +19,17 @@ function game(wins) {
     } else if (wins[1] === 1) {
         computerWins++;
     }
-    score.textContent = `PLAYER: ${playerWins} COMPUTER: ${computerWins}`;
+    score.textContent = `PLAYER: ${playerWins} // COMPUTER: ${computerWins}`;
 
-    if (playerWins === 5) gameWinner.textContent = 'The player wins this time!'; 
-    else if (computerWins === 5) gameWinner.textContent = 'The computer wins this time!';
+    if (playerWins === 5) {
+        gameWinner.textContent = 'The player wins this time!';
+        btn.forEach(button => button.disabled = true);
+        container.appendChild(refresh);
+    } else if (computerWins === 5) {
+        gameWinner.textContent = 'The computer wins this time!';
+        btn.forEach(button => button.disabled = true);
+        container.appendChild(refresh);
+    }
 }
 
 function computerPlay() {
@@ -50,10 +64,10 @@ function playRound(e) {
             if (computerSelection === "rock") {
                 winner.textContent = 'Draw!'
             } else if (computerSelection === "paper") {
-                winner.textContent = 'Computer wins!';
+                winner.textContent = 'Computer wins this round!';
                 wins[1] += 1;
             } else if (computerSelection === "scissor") {
-                winner.textContent = 'Player wins!';
+                winner.textContent = 'Player wins this round!';
                 wins[0] += 1;
             }
             break;
@@ -62,10 +76,10 @@ function playRound(e) {
             if (computerSelection === "paper") {
                 winner.textContent = 'Draw!'
             } else if (computerSelection === "scissor") {
-                winner.textContent = 'Computer wins!';
+                winner.textContent = 'Computer wins this round!';
                 wins[1] += 1;
             } else if (computerSelection === "rock") {
-                winner.textContent = 'Player wins!';
+                winner.textContent = 'Player wins this round!';
                 wins[0] += 1;
             }
             break;
@@ -74,10 +88,10 @@ function playRound(e) {
             if (computerSelection === "scissor") {
                 winner.textContent = 'Draw!'
             } else if (computerSelection === "rock") {
-                winner.textContent = 'Computer wins!';
+                winner.textContent = 'Computer wins this round!';
                 wins[1] += 1;
             } else if (computerSelection === "paper") {
-                winner.textContent = 'Player wins!';
+                winner.textContent = 'Player wins this round!';
                 wins[0] += 1;
             }
             break;
@@ -88,4 +102,9 @@ function playRound(e) {
     }
     
     game(wins);
+}
+
+function restartGame() {
+    playerWins = 0;
+    computerWins = 0;
 }
